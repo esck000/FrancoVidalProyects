@@ -268,32 +268,39 @@ return [
      *   E.g set it to 'utf8mb4' in MariaDB and MySQL and 'utf8' for any
      *   other RDBMS.
      */
-    'Datasources' => [
-        'default' => [
-            'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'persistent' => false,
-            'host' => 'localhost',
-            'port' => '5432',
-            'username' => 'postgres',
-            'password' => '03061892',
-            'database' => 'artemares',
-            'encoding' => 'UTF8',
-            'timezone' => 'America/Santiago',
-            'flags' => [],
+        'Datasources' => [
+            'default' => [
+                'className' => 'Cake\Database\Connection',
+                'driver' => 'Cake\Database\Driver\Postgres',
+                'persistent' => false,
+
+                'host' => env('DB_HOST', 'localhost'),
+                'port' => env('DB_PORT', '5432'),
+                'username' => env('DB_USERNAME', 'postgres'),
+                'password' => env('DB_PASSWORD'),
+
+                'database' => env('DB_DATABASE', 'artemares'),
+                'encoding' => 'UTF8',
+                'timezone' => 'America/Santiago',
+                'flags' => [],
+            ],
+
+            'test' => [
+                'className' => 'Cake\Database\Connection',
+                'driver' => 'Cake\Database\Driver\Postgres',
+                'persistent' => false,
+
+                'host' => env('DB_TEST_HOST', 'localhost'),
+                'port' => env('DB_TEST_PORT', '5432'),
+                'username' => env('DB_TEST_USERNAME', 'postgres'),
+                'password' => env('DB_TEST_PASSWORD'),
+
+                'database' => env('DB_TEST_DATABASE', 'test_myapp'),
+                'encoding' => 'UTF8',
+                'timezone' => 'America/Santiago',
+            ],
         ],
 
-        'test' => [
-            'className' => 'Cake\Database\Connection',
-            'driver' => 'Cake\Database\Driver\Postgres',
-            'persistent' => false,
-            'host' => 'localhost',
-            'username' => 'root',
-            'password' => '',
-            'database' => 'test_myapp',
-            'encoding' => 'utf8mb4',
-        ],
-    ],
 
 
     /*
