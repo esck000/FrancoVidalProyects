@@ -1,0 +1,32 @@
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fondo global */
+html,
+body,
+#root {
+  height: 100%;
+  background-color: #ffffff;
+}
+
+/* Asegura que las secciones no generen scroll horizontal */
+section {
+  width: 100%;
+}
+
+/* Contenedor general que organiza todo verticalmente */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* toda la altura del viewport */
+}
+
+/* El main crece para ocupar el espacio disponible entre Navbar y Footer */
+.main-content {
+  flex: 1; /* ocupa todo el espacio libre */
+  margin-top: 100px; /* deja espacio para la navbar fija */
+}

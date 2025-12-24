@@ -1,0 +1,535 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --nav-height: 102px;
+}
+
+/* ========================================================================= */
+/* ============================ PAGE WRAPPER =============================== */
+/* ========================================================================= */
+
+.recipes-page {
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+  padding-bottom: 40px;
+  background: #f3f6fd;
+  font-family: "Inter", sans-serif;
+}
+
+/* ========================================================================= */
+/* ============================ HEADER ===================================== */
+/* ========================================================================= */
+
+.recipes-header {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 32px 16px 8px;
+}
+
+.recipes-header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.recipes-header h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  color: #0f172a;
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 0.98rem;
+  color: #64748b;
+}
+
+/* =================== FILTERS =================== */
+
+.recipes-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.recipes-filters input {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+.recipes-filters input {
+    flex: 1;
+  min-width: 220px;
+}
+
+.recipes-filters input:focus{
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.15);
+}
+
+/* ========================================================================= */
+/* ============================ GRID ======================================= */
+/* ========================================================================= */
+
+.recipes-grid {
+  max-width: 1140px;
+  margin: 26px auto 0;
+  padding: 0 16px 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 22px;
+}
+
+/* ========================================================================= */
+/* ============================ CARD ======================================= */
+/* ========================================================================= */
+
+.recipe-card {
+background: #ffffff;
+    border-radius: 20px;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recipe-card:hover {
+  box-shadow: 0 16px 45px rgba(15, 23, 42, 0.12); /* igual */
+  transform: translateY(-4px);
+}
+
+.recipe-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* puedes cambiarlo */
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.recipe-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* BODY */
+.recipe-body {
+  padding: 14px 16px 10px;
+  flex: 1;
+}
+
+.recipe-body h3 {
+  font-size: 1.08rem;
+  margin: 0 0 4px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.recipe-desc {
+  font-size: 0.9rem;
+  color: #475569;
+  margin: 0;
+}
+
+/* ========= BOTÓN "VER RECETA" (igual a add-cart-btn) ========= */
+
+.recipe-actions {
+  margin-top: auto; /* 🔥 empuja hacia abajo */
+  border-top: 1px solid #e2e8f0;
+  padding: 10px 14px 12px;
+  display: flex;
+  justify-content: center; /* ⬅️ centrado horizontal */
+}
+
+
+.recipe-btn {
+  width: 100%;
+  max-width: 160px; /* 🔥 todos iguales */
+  border-radius: 999px;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  background: #0f172a;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+.recipe-btn:hover {
+  background: #1e293b;
+  transform: translateY(-1px);
+}
+
+/*========================================================================*/
+/*============================= MODAL ====================================*/
+/*========================================================================*/
+
+.recipe-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.recipe-modal {
+  background: #ffffff;
+  border-radius: 26px;
+  width: 900px;
+  max-width: 92vw;
+
+  height: 520px;          /* 🔥 ALTURA FIJA */
+  max-height: 85vh;       /* seguridad en pantallas chicas */
+
+  padding: 26px;
+  box-shadow: 0 22px 65px rgba(15, 23, 42, 0.35);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Botón cerrar (idéntico a productos) */
+.recipe-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.6rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.recipe-close-btn:hover {
+  color: #0f172a;
+}
+
+/* ===================== LAYOUT ===================== */
+
+.recipe-modal-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1.2fr;
+  gap: 36px;
+
+  flex: 1;                /* 🔥 ocupa toda la altura */
+  overflow: hidden;       /* evita que rompa el modal */
+}
+
+
+/* ===================== IMAGEN ===================== */
+
+.recipe-modal-image {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.recipe-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 🔥 consistente */
+  border-radius: 18px;
+}
+
+
+
+/* ===================== INFO ===================== */
+
+.recipe-modal-info {
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* CLAVE */
+}
+
+
+.recipe-modal-header h2 {
+  margin: 0;
+  padding-right: 8px;
+  align-items: start;
+  font-size: 1.6rem;
+  line-height: 1.2;
+
+  /* 🔥 evita choque */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recipe-title {
+  padding-right: 8px; /* 🔥 deja espacio para la X */
+}
+
+
+.recipe-detail-desc {
+  margin-bottom: 8px;
+}
+
+
+/* ===================== INGREDIENTES (TEXTO) ===================== */
+
+.recipe-ingredientes-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.recipe-ingredientes-block h3 {
+  margin-bottom: 6px;
+}
+
+.recipe-ingredientes-block p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+
+/* ===================== PRODUCTOS RELACIONADOS ===================== */
+.related-products-block {
+  margin-top: 22px;
+}
+
+.related-products-block ul {
+  margin-top: 8px;
+  padding-left: 5px;
+  list-style: none;
+  list-style-position: inside;
+}
+
+.related-products-block li {
+  padding: 6px 0;
+  font-size: 0.92rem;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.related-products-block li::before {
+  content: "•";
+  color: #2563eb;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.related-products-list{
+  list-style-position: inside;
+}
+
+.related-product-item-product-link{
+  align-items: center;
+  gap: 6px;
+
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  color: #2563eb;
+  padding: 4px 6px;
+  border-radius: 6px;
+
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}  
+
+/* ======================================================
+   LOADER
+====================================================== */
+.grid-loader {
+  grid-column: 1 / -1;      /* ocupa todo el ancho del grid */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  font-size: 1rem;
+  color: #000000;
+}
+
+/* ======================================================
+   RESPONSIVE — TABLET
+====================================================== */
+
+@media (max-width: 900px) {
+
+  /* HEADER */
+  .recipes-header-main {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .recipes-header h1 {
+    font-size: 2rem;
+  }
+
+  /* GRID */
+  .recipes-grid {
+    gap: 18px;
+  }
+
+  /* MODAL → una columna */
+  .recipe-modal-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .recipe-modal-image img {
+    max-height: 280px;
+  }
+}
+
+
+/* ======================================================
+   RESPONSIVE — MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+
+  /* ================= HEADER ================= */
+
+  .recipes-header {
+    padding: 24px 16px 8px;
+  }
+
+  .recipes-header h1 {
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* ================= FILTRO ================= */
+
+  .recipes-filters {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .recipes-filters input {
+    width: 100%;
+  }
+
+  /* ================= GRID ================= */
+
+  .recipes-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  /* ================= CARD ================= */
+
+  .recipe-body h3 {
+    font-size: 1rem;
+  }
+
+  .recipe-actions {
+    padding: 10px;
+  }
+
+  .recipe-btn {
+    max-width: 100%;
+    font-size: 0.82rem;
+  }
+
+  /* ================= MODAL ================= */
+
+  .recipe-modal-overlay {
+    align-items: flex-start;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .recipe-modal {
+    height: auto;            /* 🔥 CLAVE */
+    max-height: 94vh;
+    padding: 18px;
+    border-radius: 22px;
+    overflow-y: auto;        /* 🔥 scroll real */
+  }
+
+  .recipe-modal-layout {
+    display: flex;           /* deja grid */
+    flex-direction: column;
+    gap: 18px;
+    overflow: visible;
+  }
+
+  .recipe-close-btn {
+    top: 12px;
+    right: 14px;
+    font-size: 1.4rem;
+  }
+
+  /* ================= IMAGEN ================= */
+
+  .recipe-modal-image {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .recipe-modal-image img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+  }
+
+  /* ================= INFO ================= */
+
+  .recipe-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .recipe-detail-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ================= INGREDIENTES ================= */
+
+  .recipe-section-title {
+    font-size: 0.9rem;
+  }
+
+  .recipe-ingredients-text {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  /* ================= PRODUCTOS RELACIONADOS ================= */
+
+  .related-products-list {
+    padding-left: 0;
+  }
+
+  .related-product-item {
+    padding: 6px 0;
+  }
+
+  .related-product-name {
+    font-size: 0.9rem;
+  }
+}

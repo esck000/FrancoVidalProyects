@@ -1,0 +1,74 @@
+:root {
+  --btn-bg: rgba(255, 255, 255, 0.18);
+  --btn-bg-hover: rgba(255, 255, 255, 0.28);
+  --btn-border: rgba(255, 255, 255, 0.6);
+  --btn-border-hover: rgba(255, 255, 255, 0.85);
+
+  --btn-secondary-bg: #e1ecf7;
+  --btn-secondary-bg-hover: #d6e4f4;
+  --btn-secondary-text: #0a3d62;
+}
+
+/* =====================================
+   BOTÓN BASE — estilo premium minimal
+===================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 12px 32px;
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+
+  transition: all 0.25s ease;
+  border: 2px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: #ffffff;
+
+  backdrop-filter: blur(6px);
+}
+
+/* Hover elegante, suave y profesional */
+.btn:hover {
+  background: var(--btn-bg-hover);
+  border-color: var(--btn-border-hover);
+  transform: translateY(-1px);
+}
+
+/* Click suave */
+.btn:active {
+  transform: translateY(0px);
+  opacity: 0.9;
+}
+
+/* =====================================
+   TAMAÑOS
+===================================== */
+.btn--medium {
+  padding: 12px 32px;
+}
+
+.btn--large {
+  padding: 15px 42px;
+  font-size: 1.05rem;
+}
+
+/* =====================================
+   VARIANTE SECUNDARIA (tipo "Contact us")
+===================================== */
+.btn--outline {
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 2px solid #d0e2f5;
+  backdrop-filter: none;
+  box-shadow: none;
+}
+
+.btn--outline:hover {
+  background: var(--btn-secondary-bg-hover);
+  border-color: #b7d0ea;
+}
